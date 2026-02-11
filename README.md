@@ -131,11 +131,6 @@ REQUESTED → QUEUED → ALLOCATED → COMPLETED
 
 Within each tier, earlier requests have higher priority (FIFO).
 
-## Documentation
-
-- **[ORCHESTRATION.md](./ORCHESTRATION.md)** - System architecture and component responsibilities
-- **[TASK_FLOW.md](./TASK_FLOW.md)** - Operational flow and debugging guide
-
 ## Design Principles
 
 1. **Determinism**: Same input → same output
