@@ -5,7 +5,7 @@ Backend-only core for allocating patient tokens to doctor time slots with real-t
 ## Features
 
 - **Strict Capacity Management**: Slots never exceed capacity
-- **Priority-Based Allocation**: EMERGENCY > REFERRAL > ONLINE > WALKIN
+- **Priority-Based Allocation**: EMERGENCY > REFERRAL > ONLINE = WALKIN (availibility basis) 
 - **Event Handling**: Cancellations, no-shows, doctor delays, emergencies
 - **Dynamic Reallocation**: Tokens reallocated when doctors are delayed
 - **Explicit State Machine**: All token state transitions are traceable
