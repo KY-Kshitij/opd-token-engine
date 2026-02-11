@@ -11,8 +11,12 @@ Backend-only core for allocating patient tokens to doctor time slots with real-t
 ## Features
 
 - **Strict Capacity Management**: Slots never exceed capacity
+<<<<<<< HEAD
 - **Priority-Based Allocation**: EMERGENCY > REFERRAL > FOLLOWUP > ONLINE > WALKIN
 - **Multiple Token Sources**: Online booking, Walk-in, Paid Priority (Referral), Follow-up
+=======
+- **Priority-Based Allocation**: EMERGENCY > REFERRAL > ONLINE(paid) > WALKIN  
+>>>>>>> e5e8661bc9e96932f1aff60c90cd8e3083137711
 - **Event Handling**: Cancellations, no-shows, doctor delays, emergencies
 - **Dynamic Reallocation**: Tokens reallocated when doctors are delayed
 - **Explicit State Machine**: All token state transitions are traceable
@@ -138,11 +142,6 @@ REQUESTED → QUEUED → ALLOCATED → COMPLETED
 - **WALKIN**: 0-99 (lowest - walk-in patients)
 
 Within each tier, earlier requests have higher priority (FIFO).
-
-## Documentation
-
-- **[ORCHESTRATION.md](./ORCHESTRATION.md)** - System architecture and component responsibilities
-- **[TASK_FLOW.md](./TASK_FLOW.md)** - Operational flow and debugging guide
 
 ## Design Principles
 
