@@ -5,8 +5,9 @@
  */
 export enum PatientSource {
     WALKIN = 'WALKIN',       // Lowest priority
+    FOLLOWUP = 'FOLLOWUP',   // Follow-up patients (continuity of care)
     ONLINE = 'ONLINE',       // Medium priority
-    REFERRAL = 'REFERRAL',   // High priority
+    REFERRAL = 'REFERRAL',   // High priority (paid priority patients)
     EMERGENCY = 'EMERGENCY'  // Highest priority
 }
 

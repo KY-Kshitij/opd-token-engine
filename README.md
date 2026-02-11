@@ -1,11 +1,18 @@
 # OPD Token Allocation Engine
 
+![Node.js](https://img.shields.io/badge/Node.js-18.x-green)
+![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue)
+![Architecture](https://img.shields.io/badge/Architecture-Domain--First-purple)
+![Status](https://img.shields.io/badge/Status-Assignment--Ready-success)
+
+
 Backend-only core for allocating patient tokens to doctor time slots with real-time event handling.
 
 ## Features
 
 - **Strict Capacity Management**: Slots never exceed capacity
-- **Priority-Based Allocation**: EMERGENCY > REFERRAL > ONLINE > WALKIN
+- **Priority-Based Allocation**: EMERGENCY > REFERRAL > FOLLOWUP > ONLINE > WALKIN
+- **Multiple Token Sources**: Online booking, Walk-in, Paid Priority (Referral), Follow-up
 - **Event Handling**: Cancellations, no-shows, doctor delays, emergencies
 - **Dynamic Reallocation**: Tokens reallocated when doctors are delayed
 - **Explicit State Machine**: All token state transitions are traceable
@@ -66,7 +73,7 @@ npm run simulation
 
 This runs a full OPD day with:
 - 3 doctors (different specializations and schedules)
-- 15+ patient tokens (mixed sources)
+- 19+ patient tokens (all 4 sources: Online, Walk-in, Referral, Follow-up)
 - 1 emergency event
 - 1 cancellation
 - 1 no-show
@@ -124,10 +131,11 @@ REQUESTED → QUEUED → ALLOCATED → COMPLETED
 
 ## Priority System
 
-- **EMERGENCY**: 1000+ (highest)
-- **REFERRAL**: 500-999
-- **ONLINE**: 100-499
-- **WALKIN**: 0-99
+- **EMERGENCY**: 1000+ (highest - critical cases)
+- **REFERRAL**: 500-999 (high - paid priority patients)
+- **FOLLOWUP**: 300-499 (medium-high - continuity of care)
+- **ONLINE**: 100-299 (medium - pre-booked appointments)
+- **WALKIN**: 0-99 (lowest - walk-in patients)
 
 Within each tier, earlier requests have higher priority (FIFO).
 

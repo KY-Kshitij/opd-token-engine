@@ -135,12 +135,14 @@ function runSimulation(): void {
         { name: 'Sunita Devi', age: 38, source: PatientSource.WALKIN, doctorId: 'DOC1', flexibility: TokenFlexibility.HIGH },
         { name: 'Vikram Joshi', age: 42, source: PatientSource.ONLINE, doctorId: 'DOC1', flexibility: TokenFlexibility.MEDIUM },
         { name: 'Anjali Gupta', age: 29, source: PatientSource.WALKIN, doctorId: 'DOC1', flexibility: TokenFlexibility.HIGH },
+        { name: 'Ramesh Patel', age: 50, source: PatientSource.FOLLOWUP, doctorId: 'DOC1', flexibility: TokenFlexibility.MEDIUM },
 
         // Dr. Patel - Cardiology
         { name: 'Mohan Lal', age: 60, source: PatientSource.REFERRAL, doctorId: 'DOC2', flexibility: TokenFlexibility.MEDIUM },
         { name: 'Neha Sharma', age: 35, source: PatientSource.ONLINE, doctorId: 'DOC2', flexibility: TokenFlexibility.MEDIUM },
         { name: 'Ravi Tiwari', age: 50, source: PatientSource.WALKIN, doctorId: 'DOC2', flexibility: TokenFlexibility.HIGH },
         { name: 'Kavita Reddy', age: 48, source: PatientSource.REFERRAL, doctorId: 'DOC2', flexibility: TokenFlexibility.MEDIUM },
+        { name: 'Deepak Shah', age: 55, source: PatientSource.FOLLOWUP, doctorId: 'DOC2', flexibility: TokenFlexibility.MEDIUM },
 
         // Dr. Kumar - Pediatrics
         { name: 'Baby Aryan', age: 2, source: PatientSource.ONLINE, doctorId: 'DOC3', flexibility: TokenFlexibility.MEDIUM },
@@ -148,6 +150,8 @@ function runSimulation(): void {
         { name: 'Baby Rohan', age: 3, source: PatientSource.ONLINE, doctorId: 'DOC3', flexibility: TokenFlexibility.MEDIUM },
         { name: 'Baby Siya', age: 5, source: PatientSource.WALKIN, doctorId: 'DOC3', flexibility: TokenFlexibility.HIGH },
         { name: 'Baby Aarav', age: 1, source: PatientSource.REFERRAL, doctorId: 'DOC3', flexibility: TokenFlexibility.MEDIUM },
+        { name: 'Baby Meera', age: 3, source: PatientSource.FOLLOWUP, doctorId: 'DOC3', flexibility: TokenFlexibility.MEDIUM },
+        { name: 'Baby Krishna', age: 2, source: PatientSource.FOLLOWUP, doctorId: 'DOC3', flexibility: TokenFlexibility.MEDIUM },
     ];
 
     let tokenCounter = 1;
@@ -178,6 +182,7 @@ function runSimulation(): void {
 
     log(`Created ${tokens.size} tokens`);
     log(`  WALKIN: ${Array.from(tokens.values()).filter(t => t.source === PatientSource.WALKIN).length}`);
+    log(`  FOLLOWUP: ${Array.from(tokens.values()).filter(t => t.source === PatientSource.FOLLOWUP).length}`);
     log(`  ONLINE: ${Array.from(tokens.values()).filter(t => t.source === PatientSource.ONLINE).length}`);
     log(`  REFERRAL: ${Array.from(tokens.values()).filter(t => t.source === PatientSource.REFERRAL).length}`);
 

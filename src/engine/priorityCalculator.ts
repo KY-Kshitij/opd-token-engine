@@ -7,11 +7,12 @@ import { Token, PatientSource } from '../models/Token';
  * 
  * Pure function - same input always produces same output
  * 
- * Priority rules:
- * - EMERGENCY: 1000 + time-based tiebreaker (earlier = higher)
- * - REFERRAL: 500 + time-based tiebreaker
- * - ONLINE: 100 + time-based tiebreaker
- * - WALKIN: 0 + time-based tiebreaker
+ * Priority rules (5-tier system):
+ * - EMERGENCY: 1000 + time-based tiebreaker (highest - critical cases)
+ * - REFERRAL: 500 + time-based tiebreaker (high - paid priority patients)
+ * - FOLLOWUP: 300 + time-based tiebreaker (medium-high - continuity of care)
+ * - ONLINE: 100 + time-based tiebreaker (medium - pre-booked)
+ * - WALKIN: 0 + time-based tiebreaker (lowest - walk-in patients)
  * 
  * Time-based tiebreaker: Use timestamp to ensure FIFO within same source
  * Lower timestamp (earlier request) = higher priority within tier
@@ -28,6 +29,9 @@ export function calculatePriority(token: Token): number {
             break;
         case PatientSource.REFERRAL:
             basePriority = 500;
+            break;
+        case PatientSource.FOLLOWUP:
+            basePriority = 300;
             break;
         case PatientSource.ONLINE:
             basePriority = 100;
